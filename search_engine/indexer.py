@@ -90,6 +90,36 @@ class Indexer:
                  stats.documents_indexed, stats.passages_indexed, stats.seconds)
         return stats
 
+    def update(self, add: Iterable[Document], remove: Iterable[str] = (),
+               extra_meta: Optional[Dict[str, str]] = None) -> IndexStats:
+        """
+        Add and remove documents in the existing index without rebuilding it:
+        seconds instead of minutes when p2p sync brings a few documents.
+        Added documents are not compared with the existing ones for duplicate
+        groups; a full build() does that.
+        """
+        started = time.perf_counter()
+        stats = IndexStats(index_path=str(self.config.index_path))
+        conn = sqlite3.connect(self.config.index_path, timeout=30)
+        try:
+            gone = [(str(d),) for d in remove]
+            conn.executemany("DELETE FROM passages WHERE doc_id = ?", gone)
+            conn.executemany("DELETE FROM documents WHERE doc_id = ?", gone)
+            self._insert_all(conn, add, stats)
+            documents = conn.execute("SELECT COUNT(*) FROM documents").fetchone()[0]
+            passages = conn.execute("SELECT COUNT(*) FROM passages").fetchone()[0]
+            conn.executemany(
+                "INSERT OR REPLACE INTO meta(key, value) VALUES (?, ?)",
+                [("document_count", str(documents)), ("passage_count", str(passages))]
+                + [(str(k), str(v)) for k, v in (extra_meta or {}).items()],
+            )
+            conn.commit()
+        finally:
+            conn.close()
+        stats.seconds = round(time.perf_counter() - started, 3)
+        log.info("Updated index: +%d documents, -%d, in %.2fs", stats.documents_indexed, len(gone), stats.seconds)
+        return stats
+
     # ------------------------------------------------------------------
     @staticmethod
     def _create_schema(conn: sqlite3.Connection) -> None:

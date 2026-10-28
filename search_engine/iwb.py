@@ -29,6 +29,7 @@ Use:
 from __future__ import annotations
 
 import hashlib
+import json
 import logging
 import re
 import sqlite3
@@ -53,6 +54,10 @@ SIGNATURE_KEY = "source_signature"
 # Bump when the way documents are read or cleaned changes, so existing indexes
 # are rebuilt even though the database itself did not change.
 PIPELINE_VERSION = "iwb-3"
+# Up to this many added/removed documents are applied to the existing index;
+# more than that and the whole index is rebuilt (better boilerplate removal and
+# duplicate grouping, but ~30 s for the full library).
+MAX_INCREMENTAL = 50
 
 
 # ---------------------------------------------------------------------------
@@ -92,14 +97,23 @@ def _title_from_flat_text(text: str, fallback: str) -> str:
     return " ".join(words[:12]) if words else fallback
 
 
+def database_ids(db_path: Path, table: str = TABLE) -> set:
+    conn = _connect_read_only(db_path)
+    try:
+        return {str(r[0] or "").strip() for r in conn.execute(f'SELECT "{KEY}" FROM {table}')}
+    finally:
+        conn.close()
+
+
 def load_iwb_database(db_path: Path, files_dir: Optional[Path] = None,
-                      table: str = TABLE) -> Tuple[List[Document], LoadReport]:
+                      table: str = TABLE, only: Optional[set] = None) -> Tuple[List[Document], LoadReport]:
     """
     Turn the rows of their `docs_index` table into Documents.
 
     db_path    their search_index.db
     files_dir  optional folder with the original files named <doc_id>.html, used
                when a row's own `filepath` does not exist on this device
+    only       optional set of doc_ids: load just those rows
     """
     db_path = Path(db_path)
     report = LoadReport()
@@ -115,8 +129,10 @@ def load_iwb_database(db_path: Path, files_dir: Optional[Path] = None,
         rows = conn.execute(f"SELECT * FROM {table}").fetchall()
     finally:
         conn.close()
+    if only is not None:
+        rows = [r for r in rows if str(r[KEY] or "").strip() in only]
 
-    base = db_path.resolve().parent       # their filepath is relative to the project folder
+    base =db_path.resolve().parent       # their filepath is relative to the project folder
     extracted: list = []                  # same layout as loaders.load_corpus, for remove_repeated_lines
     meta_by_index: List[Dict[str, Any]] = []
     seen: set = set()
@@ -280,19 +296,49 @@ class IWBSearch:
             current = database_signature(self.db_path)
             rebuilt = False
             try:
-                if force or not self.config.index_path.is_file() or self._index_signature() != current:
+                previous = None if force or not self.config.index_path.is_file() else self._index_signature()
+                if previous != current and self._update_in_place(previous, current):
+                    rebuilt = True
+                elif previous != current:
                     documents, report = load_iwb_database(self.db_path, self.files_dir)
                     self.last_report = report
                     if self._engine is not None:
                         self._engine.close()    # Windows cannot replace a file that is still open
                         self._engine = None
-                    self.last_stats = Indexer(self.config).build(documents, extra_meta={SIGNATURE_KEY: current,
-                                                                                        "source_database": str(self.db_path)})
+                    skipped = database_ids(self.db_path) - {d.doc_id for d in documents}
+                    self.last_stats = Indexer(self.config).build(documents, extra_meta={
+                        SIGNATURE_KEY: current, "source_database": str(self.db_path),
+                        "skipped_ids": json.dumps(sorted(skipped))})
                     rebuilt = True
             finally:
                 if self._engine is None and self.config.index_path.is_file():
                     self._engine = SearchEngine(config=self.config)   # the new index, or the old one if the build failed
             return rebuilt
+
+    def _update_in_place(self, previous: Optional[str], current: str) -> bool:
+        """Apply a few added/removed documents to the existing index. False if a full rebuild is needed."""
+        if not previous or previous.split(":")[0] != current.split(":")[0]:   # no index, or new pipeline version
+            return False
+        conn = sqlite3.connect(self.config.index_path.resolve().as_uri() + "?mode=ro", uri=True)
+        try:
+            indexed = {r[0] for r in conn.execute("SELECT doc_id FROM documents")}
+            skipped = set(json.loads((conn.execute("SELECT value FROM meta WHERE key = 'skipped_ids'").fetchone()
+                                      or ["[]"])[0]))
+        finally:
+            conn.close()
+        in_db = database_ids(self.db_path)
+        added, removed = in_db - indexed - skipped, indexed - in_db
+        if len(added) + len(removed) > MAX_INCREMENTAL:
+            return False
+        documents, report = load_iwb_database(self.db_path, self.files_dir, only=added)
+        self.last_report = report
+        skipped = (skipped & in_db) | (added - {d.doc_id for d in documents})   # home pages, empty rows
+        if self._engine is not None:
+            self._engine.close()     # reopened by refresh(): it caches the document count
+            self._engine = None
+        self.last_stats = Indexer(self.config).update(documents, removed, extra_meta={
+            SIGNATURE_KEY: current, "skipped_ids": json.dumps(sorted(skipped))})
+        return True
 
     def _maybe_refresh(self) -> None:
         if time.monotonic() - self._last_check >= self.check_every:
