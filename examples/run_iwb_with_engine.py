@@ -16,6 +16,8 @@ database, search_engine_index.db (ignored by their .gitignore, which ignores *.d
 import argparse
 import os
 import sys
+import threading
+import time
 from http.server import HTTPServer
 from pathlib import Path
 
@@ -40,10 +42,22 @@ def main() -> None:
 
     import search as their_app              # their search.py
 
-    engine = IWBSearch(their_app.DB, files_dir=args.files_dir, check_every=args.check_every)
+    # Searches never check for changes themselves: a rebuild after a big sync takes a while,
+    # so a background thread starts it right after the sync instead of on the next search.
+    engine = IWBSearch(their_app.DB, files_dir=args.files_dir, check_every=float("inf"))
     stats = engine.stats()
     print(f"Search engine ready: {stats['documents']} documents from {their_app.DB}")
     their_app.search = engine.legacy_rows   # the only change, in memory
+
+    def follow_sync():
+        while True:
+            time.sleep(args.check_every)
+            try:
+                if engine.refresh():
+                    print(f"Search engine updated: {engine.stats()['documents']} documents")
+            except Exception as exc:        # database busy or file in use: try again next time
+                print(f"Search engine update postponed: {exc}")
+    threading.Thread(target=follow_sync, daemon=True).start()
 
     their_app.node.start()                  # same as their own __main__
     print(f"Serving on http://localhost:{args.port}")
