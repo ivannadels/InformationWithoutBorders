@@ -1,0 +1,6 @@
+# Network keys, member lists and peer addresses: per device, and the keys are private
+p2p/state/
+
+# Per-device data
+*.db
+__pycache__/
