@@ -1,0 +1,765 @@
+id,genre,language
+P01,Press Release,en
+P02,Press Release,en
+P03,Press Release,en
+P04,Press Release,en
+P05,First-person Field Account,en
+P06,First-person Field Account,en
+P07,First-person Field Account,en
+P08,First-person Field Account,en
+P09,Activity Report Chapter,en
+P10,Activity Report Chapter,en
+P11,Activity Report Chapter,en
+P12,Activity Report Chapter,en
+P13,Peer-reviewed Article,en
+P14,Peer-reviewed Article,en
+P15,Peer-reviewed Article,en
+P16,Peer-reviewed Article,en
+P17,Research Governance Document,en
+P18,Research Governance Document,en
+P19,Research Governance Document,en
+P20,Research Governance Document,en
+P21,Clinical Guideline Chapter,en
+P22,Clinical Guideline Chapter,en
+P23,Clinical Guideline Chapter,en
+P24,Clinical Guideline Chapter,en
+P25,Legal Encyclopedia Entry,en
+P26,Legal Encyclopedia Entry,en
+P27,Legal Encyclopedia Entry,en
+P28,Legal Encyclopedia Entry,en
+P29,Evaluation Report,en
+P30,Evaluation Report,en
+P31,Evaluation Report,en
+P32,Evaluation Report,en
+P33,Advocacy Brief,en
+P34,Advocacy Brief,en
+P35,Advocacy Brief,en
+P36,Advocacy Brief,en
+P37,Critical Essay,en
+P38,Critical Essay,en
+P39,Critical Essay,en
+P40,Critical Essay,en
+P41,Historical Case Study,en
+P42,Historical Case Study,en
+P43,Historical Case Study,en
+P44,Historical Case Study,en
+P45,Financial Report,en
+P46,Financial Report,en
+P47,Financial Report,en
+P48,Financial Report,en
+P49,Clinical Guideline Chapter,en
+P50,Evaluation Methodology Guide,en
+D17e499ac0a,Press Release,en
+D8bafbbfb7a,Press Release,en
+D597b901fc0,Press Release,en
+D2e11dee055,Press Release,en
+Df89b5a7a1a,Press Release,en
+D2c4fd3394c,Press Release,en
+D5057743ad2,Press Release,en
+D292411330b,Project Update,en
+D20cfb5ee60,Project Update,en
+D5222f02a50,Project Update,en
+D3b2e475c37,Project Update,en
+De248530dbe,Project Update,en
+Dd2d4a2481b,Project Update,en
+D7e9378eeb8,Project Update,en
+D8b3df52e9e,Interview,en
+D5d1bb4aad4,Interview,en
+D5375e4eb66,Statement,en
+D0513ca68ff,Statement,en
+Dda1f1cf382,Speech,en
+Df73a5c30bf,Report,en
+D3fcfb82721,Press Release,ar
+D9f045d83a6,Press Release,ar
+Da62ea9bf7f,Press Release,ar
+Db305b45b94,Press Release,ar
+D6bd328fa1a,Press Release,ar
+D25c399e2a3,Project Update,ar
+D6955e41d32,Project Update,ar
+D2764b19112,Project Update,ar
+D81a6f1eeee,Project Update,ar
+D7acf22526b,Project Update,ar
+Dac15cd638c,Interview,ar
+Dacd418953a,Statement,ar
+D1c586e6f70,Statement,ar
+D70431f133a,Activity Report Chapter,en
+D705b6e90b7,Activity Report Chapter,en
+D802e76ecc1,Activity Report Chapter,en
+Dc645c30427,Activity Report Chapter,en
+Ddc83b267e0,Activity Report Chapter,en
+D3626ca2d3e,Activity Report Chapter,en
+D362ac0b711,Activity Report Chapter,en
+D98949d5e0c,Activity Report Chapter,en
+D62457e1efb,Activity Report Chapter,en
+D6a210ea934,Activity Report Chapter,en
+D368f91afcb,Activity Report Chapter,en
+D4fa5104604,Activity Report Chapter,en
+Dbdfa725f12,Activity Report Chapter,en
+De0f71e5cf5,Activity Report Chapter,en
+D702c8332ce,Activity Report Chapter,en
+D3a344296cf,Activity Report Chapter,en
+D1ef8b2e740,Activity Report Chapter,en
+Db3559c4320,Activity Report Chapter,en
+Ddc851011e7,Activity Report Chapter,en
+D7dbb77c873,Activity Report Chapter,fr
+D00f74bcaf7,Activity Report Chapter,fr
+De76e327faa,Activity Report Chapter,es
+Dbb3e40c69c,Activity Report Chapter,fr
+Dcf6e6ba02b,Activity Report Chapter,es
+Dad7d7e880f,Activity Report Chapter,fr
+D0c937b9312,Activity Report Chapter,es
+Dbd5581d7ea,Activity Report Chapter,fr
+D162ba1334d,Activity Report Chapter,es
+D756e06cd6d,Activity Report Chapter,fr
+D6d95a6dd88,Activity Report Chapter,es
+D4a1cfc9e84,Timeline,en
+D3eb698da05,Financial Report,en
+D806bc9089a,Summary,en
+D99b084ca58,Historical Case Study,en
+D98f9c10fad,Timeline,en
+D32ea4a9d92,Financial Report,en
+Db61a4af081,Summary,en
+Dbd6e2ef149,Historical Case Study,en
+D03b100b562,Timeline,en
+Dfee2e6ea98,Financial Report,en
+Dd529d6b2d6,Summary,en
+Da384a9ee90,Historical Case Study,en
+D0648397364,Timeline,en
+D0eebba4c05,Financial Report,en
+Dbfd3dda829,Summary,en
+Dd12a09cdc4,Historical Case Study,en
+D74c6cb64f3,Timeline,en
+Db88e5c92e9,Financial Report,en
+De04deb00e2,Summary,en
+Da68d33c442,Historical Case Study,en
+Db44a39eff2,Timeline,en
+Da3c2a32b51,Financial Report,en
+Da5fd2a394e,Summary,en
+D23be77d49e,Timeline,en
+D10d6a75496,Financial Report,en
+D8edc950029,Summary,en
+D3ee82c6349,Timeline,en
+D503e3b0d63,Financial Report,en
+D9549aa0ea8,Peer-reviewed Article,en
+Dfc2b1675a1,Peer-reviewed Article,en
+Dedcbf1a53c,Peer-reviewed Article,en
+Dda00263b16,Peer-reviewed Article,en
+Ddf4ea08a8c,Peer-reviewed Article,en
+D80a45e7ec8,Peer-reviewed Article,en
+D66fe4cd145,Peer-reviewed Article,en
+D7ce58ac770,Peer-reviewed Article,en
+Dce65f43143,Peer-reviewed Article,en
+D0fe553578f,Peer-reviewed Article,en
+D832a695395,Peer-reviewed Article,en
+D1e6522c5c3,Peer-reviewed Article,en
+D014f7e7bf4,Peer-reviewed Article,en
+D9e83de4d52,Peer-reviewed Article,en
+D540d31dc83,Peer-reviewed Article,en
+D096f85888f,Peer-reviewed Article,en
+D3ceda3d736,Peer-reviewed Article,en
+D0bd9567695,Peer-reviewed Article,en
+Dbf9720f4a8,Peer-reviewed Article,en
+D0a172b79a4,Peer-reviewed Article,en
+D3744b395c7,Peer-reviewed Article,en
+D7b1badbde2,Peer-reviewed Article,en
+Dc06a714c1d,Peer-reviewed Article,en
+Da5753abc3e,Peer-reviewed Article,en
+D4543bc4b16,Peer-reviewed Article,en
+Db77c5f1b42,Peer-reviewed Article,en
+D037e4f1dc8,Peer-reviewed Article,en
+Dee2a08cd39,Peer-reviewed Article,en
+D44b991fcbd,Peer-reviewed Article,en
+D39b5a07cce,Peer-reviewed Article,en
+D02dab61f41,Peer-reviewed Article,en
+D7dbccfcf92,Peer-reviewed Article,en
+Df7ea6d2f4b,Peer-reviewed Article,en
+D4813f9a5f0,Peer-reviewed Article,en
+Dab5b7604b8,Peer-reviewed Article,en
+Db873603792,Peer-reviewed Article,en
+D4891913c58,Peer-reviewed Article,en
+D7d3811047b,Peer-reviewed Article,en
+Dad3389f998,Peer-reviewed Article,en
+De5b2f33ffa,Peer-reviewed Article,en
+Dea6c3f0f10,Peer-reviewed Article,en
+D6a4632d088,Study Protocol,en
+D7e6075bfc4,Peer-reviewed Article,en
+Df3ba72b4f8,Peer-reviewed Article,en
+D1fd995f42e,Peer-reviewed Article,en
+D4d7b8627dd,Peer-reviewed Article,en
+D955bef0477,Peer-reviewed Article,en
+D98ca469833,Peer-reviewed Article,en
+Db90c744289,Peer-reviewed Article,en
+D4951f3de24,Peer-reviewed Article,en
+De0610b719b,Peer-reviewed Article,en
+D4b1bbec358,Peer-reviewed Article,en
+D48246cb637,Peer-reviewed Article,en
+D035530810c,Study Protocol,en
+Db4e4334847,Peer-reviewed Article,en
+Dfd4bb1d3b2,Peer-reviewed Article,en
+D70c5546837,Peer-reviewed Article,en
+D527c64a588,Peer-reviewed Article,en
+D24b54ce36a,Peer-reviewed Article,en
+D199715052e,Peer-reviewed Article,en
+Da75bdbcd90,Peer-reviewed Article,en
+D674b851bcf,Peer-reviewed Article,en
+D73d7444763,Peer-reviewed Article,en
+D7c514aa2f9,Peer-reviewed Article,en
+De81b52b6ad,Peer-reviewed Article,en
+D7a52c1f25b,Peer-reviewed Article,en
+Dd0941288db,Peer-reviewed Article,en
+De61d0eaa84,Peer-reviewed Article,en
+D718afe08b3,Peer-reviewed Article,en
+D5a8d5824d6,Peer-reviewed Article,en
+D8bc477871b,Peer-reviewed Article,en
+D115e2a4293,Peer-reviewed Article,en
+Db5a154666e,Peer-reviewed Article,en
+D35e08369e9,Peer-reviewed Article,en
+D4f51b3b8aa,Peer-reviewed Article,en
+D08b1166a91,Peer-reviewed Article,en
+D1fa284e16c,Peer-reviewed Article,en
+D232e32b0aa,Peer-reviewed Article,en
+D0197c14ba0,Peer-reviewed Article,en
+D96536b2560,Peer-reviewed Article,en
+D4afd3f8cff,Peer-reviewed Article,en
+Dbb8e0e493d,Peer-reviewed Article,en
+Dd3e3626d4a,Peer-reviewed Article,en
+Df1b0fc1446,Peer-reviewed Article,en
+Da04fa8c20e,Peer-reviewed Article,en
+D71cfd2aa0c,Peer-reviewed Article,en
+D989b4aac2d,Peer-reviewed Article,en
+D8954bd10a8,Peer-reviewed Article,en
+D2b2708f82d,Peer-reviewed Article,en
+D6e4fcedcad,Peer-reviewed Article,en
+Dcf618c0995,Peer-reviewed Article,en
+Dba66038131,Peer-reviewed Article,en
+Da65196eab2,Peer-reviewed Article,en
+D0c8b8c1868,Peer-reviewed Article,en
+D62e0b7f65e,Peer-reviewed Article,en
+De35232409a,Peer-reviewed Article,en
+D20de515bc6,Peer-reviewed Article,en
+De789e08ccc,Peer-reviewed Article,en
+D1acecedd02,Peer-reviewed Article,en
+De3f857b161,Peer-reviewed Article,en
+Da1d312e3ab,Peer-reviewed Article,en
+D081f681b26,Peer-reviewed Article,en
+Dfc8173d0de,Peer-reviewed Article,en
+D15481ba1fa,Peer-reviewed Article,en
+D474f90492f,Peer-reviewed Article,en
+Db5c5c06c40,Peer-reviewed Article,en
+D9c3366a7c9,Peer-reviewed Article,en
+Dd6a1769f2b,Peer-reviewed Article,en
+D3f13adccf5,Peer-reviewed Article,en
+D5e8da6e171,Peer-reviewed Article,en
+D231ec86b56,Legal Encyclopedia Entry,en
+D95731a5b07,Legal Encyclopedia Entry,en
+D4c9ba9b73a,Legal Encyclopedia Entry,en
+De8e37cb6a1,Legal Encyclopedia Entry,en
+Df9abadea0b,Legal Encyclopedia Entry,en
+Dd93a3621e3,Legal Encyclopedia Entry,en
+Df843911b9c,Legal Encyclopedia Entry,en
+Df295ad7498,Legal Encyclopedia Entry,en
+D7401c9a9f4,Legal Encyclopedia Entry,en
+De335d249c7,Legal Encyclopedia Entry,en
+D1863c5e77b,Legal Encyclopedia Entry,en
+D47e9119050,Legal Encyclopedia Entry,en
+D19a9afbb83,Legal Encyclopedia Entry,en
+D95804df969,Legal Encyclopedia Entry,en
+Df85d288c91,Legal Encyclopedia Entry,en
+D6b53b9e283,Legal Encyclopedia Entry,en
+Db171f486da,Legal Encyclopedia Entry,en
+Dedb81e1789,Legal Encyclopedia Entry,en
+D49675ad8c1,Legal Encyclopedia Entry,en
+D7275d37db4,Legal Encyclopedia Entry,en
+Ded279162fa,Legal Encyclopedia Entry,en
+D0f687b1bc0,Legal Encyclopedia Entry,en
+D6d7fafbadc,Legal Encyclopedia Entry,en
+Df133dbadbc,Legal Encyclopedia Entry,en
+D6994607cf8,Legal Encyclopedia Entry,en
+D42c9d32f36,Statement,en
+D8a0e54ac4f,Statement,en
+D5ce211b5b0,Statement,en
+D504187ddc0,Statement,en
+D17890cad99,Statement,en
+D7f227c43c5,Statement,en
+Dc0539d92df,Statement,en
+D1e6ed5c563,Statement,en
+D576ed006d1,Statement,en
+Dc8e8dd71c1,Statement,en
+Daf7d793126,Statement,en
+Dc163a8c770,Statement,en
+De05c727a25,Statement,en
+Ddd45e9013a,Statement,en
+Dd04607a1bd,Statement,en
+D36fbf9932e,Statement,en
+D4d679068a9,Statement,en
+Deb43f3d3b7,Statement,en
+Df45c9a1267,Statement,en
+D85da48d306,Statement,en
+De9db56dd15,Statement,en
+D148a9f7246,Statement,en
+D04be07fbc1,Statement,en
+D4fdbd7e71f,Statement,en
+D6a06b09fd0,Statement,en
+Dce38610fdf,Clinical Guideline Chapter,en
+D2c6edfbdeb,Clinical Guideline Chapter,en
+D2f6b89a8ae,Clinical Guideline Chapter,en
+D1bcbec82c8,Clinical Guideline Chapter,en
+D5b93bd7b43,Clinical Guideline Chapter,en
+D506487c525,Clinical Guideline Chapter,en
+D49a9834c4f,Clinical Guideline Chapter,en
+D7052be8368,Clinical Guideline Chapter,en
+Dd98e39dfe7,Clinical Guideline Chapter,en
+Da629acf7a4,Clinical Guideline Chapter,en
+D545a53799d,Clinical Guideline Chapter,en
+Dac9da96f9c,Clinical Guideline Chapter,en
+D1a6aaaf38c,Clinical Guideline Chapter,en
+D99058103bc,Clinical Guideline Chapter,en
+D744cf5e8a7,Clinical Guideline Chapter,en
+Dc197b09e2b,Clinical Guideline Chapter,en
+Df1999687eb,Clinical Guideline Chapter,en
+D790bc55dcd,Clinical Guideline Chapter,en
+Dce76dfe24c,Clinical Guideline Chapter,en
+D16048816a2,Clinical Guideline Chapter,en
+D0db6bc77dd,Clinical Guideline Chapter,en
+Dda26f27d40,Clinical Guideline Chapter,en
+Df2ec170bbd,Clinical Guideline Chapter,en
+Dfa1b791813,Clinical Guideline Chapter,en
+D377aa5dfe5,Clinical Guideline Chapter,en
+D373313c132,Clinical Guideline Chapter,en
+D75f5c171c2,Clinical Guideline Chapter,en
+D506fa6468a,Clinical Guideline Chapter,en
+D18a30c350b,Clinical Guideline Chapter,en
+D4f2f98746d,Clinical Guideline Chapter,en
+Da8d7f2aefc,Clinical Guideline Chapter,en
+Dce41d2a51f,Clinical Guideline Chapter,en
+D0e7847e68d,Clinical Guideline Chapter,en
+Dc1b4cebeea,Clinical Guideline Chapter,en
+D9e45d95b23,Clinical Guideline Chapter,en
+Da5fedd82cc,Clinical Guideline Chapter,en
+Dfe461f57a4,Clinical Guideline Chapter,en
+D8b13895f36,Clinical Guideline Chapter,en
+D7efa0937d9,Clinical Guideline Chapter,en
+D23e1d9311c,Clinical Guideline Chapter,en
+D8a0bf4b30a,Clinical Guideline Chapter,en
+D3f77693628,Clinical Guideline Chapter,en
+Dfbc2c806de,Clinical Guideline Chapter,en
+D997080ab54,Clinical Guideline Chapter,en
+De6f3e9c71f,Clinical Guideline Chapter,en
+De275b1a266,Clinical Guideline Chapter,en
+D64a12ee004,Clinical Guideline Chapter,en
+Dfa092908f4,Clinical Guideline Chapter,en
+Dfae984e3d1,Clinical Guideline Chapter,en
+D90e1a4d7de,Clinical Guideline Chapter,en
+D6de324faad,Press Release,en
+D2e6fdb1638,Press Release,en
+D0fdc1d0ef5,Press Release,en
+Ddbc2d1795e,Press Release,en
+D485cf07c2f,Press Release,en
+D810d7eb050,Press Release,en
+D13a0eeb8c5,Press Release,en
+D28f2e6484c,Press Release,en
+Dadc2eedb91,Press Release,en
+D8a2f164116,Press Release,en
+De03cafecf1,Press Release,en
+D8688fb1d8c,Press Release,en
+De2f723ce04,Press Release,en
+Dfd0d9e3afb,Press Release,en
+D6e9e7bc8f0,Press Release,en
+Dacd2f2d218,Press Release,en
+Dd049c70e48,Press Release,en
+D2c9bd90636,Press Release,en
+D96e6a7ce42,Press Release,en
+Dc190efdb0c,Project Update,en
+D9e5162a399,Project Update,en
+D270ed35e75,Project Update,en
+D3a2e8cc2bf,Project Update,en
+D593e0ac882,Project Update,en
+D4e14ca42fa,Project Update,en
+D905421131c,Project Update,en
+D0fe93f344c,Project Update,en
+D1bcc414c13,Project Update,en
+Daf96810c48,Project Update,en
+Df1c261b285,Project Update,en
+D3f666b74fc,Project Update,en
+D4177935ee4,Project Update,en
+De4c251983a,Project Update,en
+Dbc65e15071,Project Update,en
+D26f2cdf4c2,Voices from the Field,en
+De1f99aa2cf,Voices from the Field,en
+De86ef509f0,Voices from the Field,en
+D85d7eb197c,Voices from the Field,en
+D55eeab715f,Voices from the Field,en
+D2ad107ffa2,Voices from the Field,en
+D2ca802fb9f,Voices from the Field,en
+Dd4ee6d16b7,Voices from the Field,en
+D89f8f8704e,Voices from the Field,en
+D11a2c3c63d,Voices from the Field,en
+D7173b6675d,Voices from the Field,en
+D88155b92de,Voices from the Field,en
+D7484199158,Voices from the Field,en
+Dc9b5ae9bd8,Voices from the Field,en
+Db2de191d11,Voices from the Field,en
+Dc1894a2331,Interview,en
+Da06d7557ae,Interview,en
+D279e1306ba,Interview,en
+Da9b1256749,Interview,en
+De9093b6b47,Interview,en
+D7fa676b119,Interview,en
+Dac76ae4784,Interview,en
+Ddc5f4e5436,Interview,en
+D13381c1c34,Op-Ed,en
+D6b8bfd81c8,Op-Ed,en
+D3a9dd210b9,Op-Ed,en
+D3c8d0341c6,Opinion,en
+Daa73c27a78,Opinion,en
+Dad97e8d44d,Opinion,en
+Dc799fdceaa,Opinion,en
+D3d2151162e,Statement,en
+Dd9a573c350,Statement,en
+Db4124383fb,Statement,en
+D36f2b46f0b,Statement,en
+Da7897cecbd,Statement,en
+D9bf7056e3d,Statement,en
+D054bcedd1a,Statement,en
+D236dc184a5,Statement,en
+D499aae5ee1,Speech,en
+Dba1a12df50,Speech,en
+D69ad43fc13,Report,en
+D7a305a70d1,Report,en
+D221a40d307,Voices from the Field,en
+D13b1b3785f,Press Release,en
+Db109fb893b,Interview,en
+D99ac00a2b3,Statement,en
+Db7cd3d41af,Project Update,en
+D0f43c42fa1,Press Release,en
+Dfa9c0c7a37,Press Release,en
+Dc92c86e29b,Press Release,en
+D0c85bc1b4a,Press Release,en
+D2fc6ab5472,Press Release,en
+D5774643607,Speech,en
+Dbaeda1f274,Press Release,en
+D907b8f0256,Report,en
+Dbd53eb7cac,Opinion,fr
+D04304ea6c4,Opinion,es
+D332fd5febc,Press Release,ar
+D5075be3d1d,Opinion,fr
+D4ebb3e2295,Opinion,es
+Db6773e8c18,Press Release,ar
+Da906dd6c63,Opinion,fr
+D866cbc1592,Opinion,es
+D160b2d96cd,Press Release,ar
+Dee50ded210,Statement,fr
+D5ba45ea0c7,Press Release,ar
+Dcb1577f6b1,Press Release,ar
+Dc835fd8fa5,Press Release,ar
+Def236d742c,Press Release,ar
+D98399d39a0,Press Release,ar
+Daee4d5fc1f,Press Release,ar
+Dab64a41cbe,Press Release,ar
+D73872d2990,Press Release,ar
+D9e96d4b753,Press Release,ar
+D46868ca351,Press Release,ar
+Dc09cbc73ed,Press Release,ar
+D2ce13192e8,Press Release,ar
+Da5383a3d0a,Press Release,ar
+De65d413d46,Press Release,ar
+D17bf4184ef,Press Release,ar
+D7a5af7866b,Press Release,ar
+D11201a228a,Project Update,ar
+Ded9b8766ac,Project Update,ar
+Df212579f8d,Project Update,ar
+Dcf2e36fd60,Project Update,ar
+D19b04b35f2,Project Update,ar
+D3260fee68c,Project Update,ar
+D835e00ac1a,Project Update,ar
+D460c83057b,Project Update,ar
+D8d18203d3a,Project Update,ar
+D24b3269713,Project Update,ar
+D8d099e6717,Voices from the Field,ar
+D855a2aa8c6,Voices from the Field,ar
+D012ed396fd,Voices from the Field,ar
+Df35d21f1d6,Voices from the Field,ar
+D9996afe2d0,Voices from the Field,ar
+D3889964229,Voices from the Field,ar
+D5da294f26a,Voices from the Field,ar
+Dd625eb4d57,Voices from the Field,ar
+Df5738d956a,Voices from the Field,ar
+D1b06b6e33c,Peer-reviewed Article,en
+D8316c95aec,Peer-reviewed Article,en
+D4dc223f819,Peer-reviewed Article,en
+D53e58415e7,Peer-reviewed Article,en
+D468eb40896,Peer-reviewed Article,en
+D45c27953cb,Peer-reviewed Article,en
+Da9f6db469d,Peer-reviewed Article,en
+D5290e827ec,Peer-reviewed Article,en
+D3fff8fb771,Peer-reviewed Article,en
+D6b93916a5a,Peer-reviewed Article,en
+D71c00a03f6,Peer-reviewed Article,en
+D1c2515fd29,Peer-reviewed Article,en
+D957b22fac7,Peer-reviewed Article,en
+Da2c7f27aa2,Peer-reviewed Article,en
+D1c730f5fe6,Peer-reviewed Article,en
+D84c3dce66e,Peer-reviewed Article,en
+D12eb6a44ae,Peer-reviewed Article,en
+D6932910da8,Peer-reviewed Article,en
+D9ae55ed798,Peer-reviewed Article,en
+Db6aa59ed1a,Peer-reviewed Article,en
+D4c15f32ded,Peer-reviewed Article,en
+De7a091d6d2,Peer-reviewed Article,en
+D34b1732147,Peer-reviewed Article,en
+D5da0aed2fd,Peer-reviewed Article,en
+D45505b9cbe,Peer-reviewed Article,en
+Dde242c302e,Peer-reviewed Article,en
+Dcacacc3bb7,Peer-reviewed Article,en
+Db87ed7ae68,Peer-reviewed Article,en
+D10e20f5f7e,Peer-reviewed Article,en
+Deece394536,Peer-reviewed Article,en
+D16794eb94d,Peer-reviewed Article,en
+D67a22ff8dc,Peer-reviewed Article,en
+Dddb62f9014,Peer-reviewed Article,en
+Da8de6138bd,Peer-reviewed Article,en
+Dec1d5ccb22,Peer-reviewed Article,en
+D72abb48856,Peer-reviewed Article,en
+Db7dd33fa30,Peer-reviewed Article,en
+Dc5f2be378d,Peer-reviewed Article,en
+D00a47577ef,Peer-reviewed Article,en
+De56cde2022,Peer-reviewed Article,en
+D279f7b3d6d,Peer-reviewed Article,en
+D673ba9db5c,Peer-reviewed Article,en
+D209c19f741,Peer-reviewed Article,en
+D80d8682e92,Peer-reviewed Article,en
+Db006be0701,Peer-reviewed Article,en
+Dd19d457d52,Peer-reviewed Article,en
+D5710a4f4c5,Peer-reviewed Article,en
+Df98e297b5f,Peer-reviewed Article,en
+D705d4b38bf,Peer-reviewed Article,en
+D48c6dcfd97,Peer-reviewed Article,en
+D03da2066dd,Peer-reviewed Article,en
+D0ae7cceef7,Research Policy,en
+D09c3654e6e,Peer-reviewed Article,en
+De081bb3a2d,Peer-reviewed Article,en
+D46512b4307,Research Policy,en
+Da8a79bb208,Peer-reviewed Article,en
+D227872fd4e,Peer-reviewed Article,en
+D1a668dca00,Peer-reviewed Article,en
+D3207862e09,Peer-reviewed Article,en
+D7dc2259eff,Peer-reviewed Article,en
+D5814f937ab,Peer-reviewed Article,en
+D111832613c,Peer-reviewed Article,en
+D07afa7fbd7,Research Policy,en
+D8aa6e6503b,Peer-reviewed Article,en
+D8b233f27d2,Peer-reviewed Article,en
+Df2e3f740e3,Peer-reviewed Article,en
+Dfb721c01fd,Peer-reviewed Article,en
+D9980aae794,Peer-reviewed Article,en
+Dd3254da5f8,Peer-reviewed Article,en
+Dce112b1459,Peer-reviewed Article,en
+D812cc34f5b,Peer-reviewed Article,en
+D00acff0abd,Peer-reviewed Article,en
+De28a3dac9b,Peer-reviewed Article,en
+Dda0b8c2901,Peer-reviewed Article,en
+Da8b17ac14e,Peer-reviewed Article,en
+D3a73e655b7,Peer-reviewed Article,en
+D6707fbdcac,Peer-reviewed Article,en
+D67e9876b52,Peer-reviewed Article,en
+De350cb4868,Peer-reviewed Article,en
+Da7bd65da54,Peer-reviewed Article,en
+D3f9de2b07a,Peer-reviewed Article,en
+D9feb5dac85,Peer-reviewed Article,en
+D4aa8d3d6c6,Peer-reviewed Article,en
+Dc1ad0828ea,Peer-reviewed Article,en
+Db2e973adc4,Peer-reviewed Article,en
+D4153c30b30,Peer-reviewed Article,en
+D40369c9b91,Peer-reviewed Article,en
+D1498e1b466,Peer-reviewed Article,en
+Dfa31139cc4,Peer-reviewed Article,en
+Dc75803ba46,Peer-reviewed Article,en
+D68ec883ee2,Peer-reviewed Article,en
+Dab7c742420,Study Protocol,en
+D479a5fc62a,Peer-reviewed Article,en
+D71c39bf00c,Peer-reviewed Article,en
+D95900a2edb,Peer-reviewed Article,en
+D90917c4e45,Peer-reviewed Article,en
+D04c8ff52a2,Peer-reviewed Article,en
+D795c870cf1,Peer-reviewed Article,en
+D473461b69b,Peer-reviewed Article,en
+D24a2c98ae3,Peer-reviewed Article,en
+Df45b248d71,Peer-reviewed Article,en
+D0ea302e15b,Peer-reviewed Article,en
+D6cd7fe655d,Peer-reviewed Article,en
+Dc5ae5123ae,Peer-reviewed Article,en
+Dbb812696fb,Peer-reviewed Article,en
+D93b7301a72,Peer-reviewed Article,en
+D285604a37d,Peer-reviewed Article,en
+Ddae572ff5a,Peer-reviewed Article,en
+D8ad70d7749,Peer-reviewed Article,en
+D4088a17716,Peer-reviewed Article,en
+D11d5ccb181,Peer-reviewed Article,en
+D9b8d885614,Peer-reviewed Article,en
+Dc50ba74e90,Peer-reviewed Article,en
+D9dce5d3ce9,Peer-reviewed Article,en
+D2306bbff2b,Peer-reviewed Article,en
+D1598c72a1b,Peer-reviewed Article,en
+Df7c02523fe,Peer-reviewed Article,en
+De19574ea6d,Peer-reviewed Article,en
+D0858e37568,Peer-reviewed Article,en
+Dea01427ae3,Peer-reviewed Article,en
+D8048b8fc82,Peer-reviewed Article,en
+Ddd8f64b337,Peer-reviewed Article,en
+D78054c697a,Peer-reviewed Article,en
+Df03791b5e1,Peer-reviewed Article,en
+Dbb1bc86e28,Peer-reviewed Article,en
+Dfea44193e4,Peer-reviewed Article,en
+D030d37cd08,Peer-reviewed Article,en
+D86163d450a,Peer-reviewed Article,en
+D9338fbb910,Peer-reviewed Article,en
+D1a691de7c0,Peer-reviewed Article,en
+D9fb30dbc22,Peer-reviewed Article,en
+D5f95a7d50e,Field Study,fr
+Dbec94eb293,Field Study,fr
+Db7b8add064,Field Study,en
+D241bea3ab2,Field Study,en
+D371401e5ce,Field Study,fr
+De28c251cf0,Field Study,fr
+D60730c9a0b,Field Study,en
+Dfe14e8ec9d,Field Study,en
+D9f7290feeb,Field Study,fr
+D43ee803d5e,Field Study,fr
+Df33b2cdff5,Field Study,fr
+D4498b68b5b,Field Study,fr
+D3b6f53301f,Scientific News,fr
+Da34922df6b,Scientific News,fr
+D03092dcfa4,Scientific News,fr
+Dd43f89f14c,Scientific News,fr
+D6f0a5ea412,Scientific News,fr
+D89ca40c1b2,Scientific Publication Notice,en
+Da0c54e36d0,Scientific Publication Notice,en
+Dd628412f10,Scientific Publication Notice,en
+D06b13d3006,Scientific Publication Notice,en
+D9962a0b190,Scientific Publication Notice,en
+Dd990b22d48,Scientific Publication Notice,en
+D5d11e790c5,Scientific Publication Notice,en
+De16826355c,Scientific Publication Notice,en
+Dc18145df95,Operational Research Essay,en
+Daeb4d85c56,Operational Research Essay,en
+D0b3a75676e,Operational Research Essay,fr
+D2920b4b4b5,Operational Research Essay,fr
+D6c1bb22e84,Operational Research Essay,en
+D2948edda08,Operational Research Essay,en
+Dc03a1ed426,Operational Research Essay,en
+D27b3efd483,Operational Research Essay,en
+D7321bf97ee,Operational Research Essay,en
+Def7985ae7f,Operational Research Essay,fr
+D687f7429a6,Operational Research Essay,en
+D72d8042903,Operational Research Essay,en
+D9a7988f7ed,Operational Research Essay,en
+D00a2be3811,Operational Research Essay,en
+D6da95ba1fe,Operational Research Essay,en
+D87f689134a,Operational Research Essay,en
+Da51b7cbb09,Operational Research Essay,en
+Dab0d69269b,Operational Research Essay,en
+D8c0a5add61,Operational Research Essay,en
+D05e3a417ff,Operational Research Essay,en
+D8018e92e63,Operational Research Essay,en
+D43cc2d03d8,Operational Research Essay,en
+D405f78fd1b,Operational Research Essay,en
+Dcfb54d91c5,Operational Research Essay,en
+De26d037c78,Operational Research Essay,en
+Dcb61e1119f,Clinical Guideline Chapter,en
+D37bbcc2a84,Clinical Guideline Chapter,es
+D3201fea5f5,Clinical Guideline Chapter,fr
+Da4bda80d2e,Clinical Guideline Chapter,en
+D748b71c6e5,Clinical Guideline Chapter,fr
+D90a8848b88,Clinical Guideline Chapter,en
+D6e4de69f32,Clinical Guideline Chapter,fr
+De865e90cce,Clinical Guideline Chapter,en
+Df303243b29,Clinical Guideline Chapter,fr
+De04128df46,Clinical Guideline Chapter,en
+D524ed548b0,Clinical Guideline Chapter,fr
+D8ddd1fa37b,Clinical Guideline Chapter,fr
+D34e2d54853,Clinical Guideline Chapter,en
+D6cbab2c6cb,Clinical Guideline Chapter,es
+D1b539fd0a2,Clinical Guideline Chapter,fr
+Dbc800c4412,Clinical Guideline Chapter,es
+D6172878e75,Clinical Guideline Chapter,fr
+D246270071f,Clinical Guideline Chapter,en
+D34cc03f8f1,Clinical Guideline Chapter,fr
+D6069eb097e,Clinical Guideline Chapter,fr
+D9e021943b7,Clinical Guideline Chapter,fr
+D8587483c49,Clinical Guideline Chapter,fr
+Dc6c7aa5a8a,Clinical Guideline Chapter,fr
+Decbdca2e26,Clinical Guideline Chapter,fr
+Dcb9537e77f,Clinical Guideline Chapter,es
+D7315b80e8e,Clinical Guideline Chapter,fr
+Dfb5b06a9b7,Clinical Guideline Chapter,en
+Dd473352227,Clinical Guideline Chapter,fr
+D14b4d02b94,Clinical Guideline Chapter,fr
+D580a93c4d4,Clinical Guideline Chapter,fr
+De7caf8ed52,Clinical Guideline Chapter,en
+D9d4ec452ad,Clinical Guideline Chapter,fr
+Dde8197a139,Clinical Guideline Chapter,fr
+Dfbc4ab37d9,Clinical Guideline Chapter,fr
+Def416d05a4,Clinical Guideline Chapter,es
+Da6f2631b3b,Clinical Guideline Chapter,fr
+D1acd41c94b,Clinical Guideline Chapter,en
+Df0e89750b8,Clinical Guideline Chapter,es
+Dafce8fb028,Clinical Guideline Chapter,fr
+D05679d7461,Clinical Guideline Chapter,en
+D50dba876bf,Clinical Guideline Chapter,es
+D2a8e3d2fa0,Clinical Guideline Chapter,fr
+D9d9716b620,Clinical Guideline Chapter,en
+D630c775a00,Clinical Guideline Chapter,es
+Dc64138c9ce,Clinical Guideline Chapter,fr
+D9518aeab1e,Clinical Guideline Chapter,fr
+Dee57dedf10,Clinical Guideline Chapter,en
+D8c0c7077b8,Clinical Guideline Chapter,fr
+Db8b3bfccbd,Clinical Guideline Chapter,es
+Dd5074a1835,Clinical Guideline Chapter,fr
+D0f4ce98344,Clinical Guideline Chapter,fr
+D89ce0fe2ef,Clinical Guideline Chapter,fr
+D9522d1205b,Clinical Guideline Chapter,fr
+D513226eb11,Clinical Guideline Chapter,fr
+D7d0d4bad4c,Clinical Guideline Chapter,en
+D7b1162c6ec,Clinical Guideline Chapter,es
+Ddd0aaff8ee,Clinical Guideline Chapter,fr
+Da9b138f064,Clinical Guideline Chapter,en
+Db774364e24,Clinical Guideline Chapter,es
+D802d104440,Clinical Guideline Chapter,fr
+D390e3325dc,Clinical Guideline Chapter,en
+D5e9f29a4e4,Clinical Guideline Chapter,fr
+Dc0c2eb9630,Clinical Guideline Chapter,en
+D863f0c41eb,Clinical Guideline Chapter,fr
+D39460ae120,Clinical Guideline Chapter,en
+D66065dc615,Clinical Guideline Chapter,fr
+De9d43640d1,Clinical Guideline Chapter,fr
+D331ad5d4f3,Clinical Guideline Chapter,en
+Dd996a7b34b,Clinical Guideline Chapter,fr
+D10b3b9a6d7,Clinical Guideline Chapter,en
+D424e5824d5,Clinical Guideline Chapter,fr
+Deb00cdbdc2,Clinical Guideline Chapter,fr
+D6b18f4994b,Clinical Guideline Chapter,es
+D4c61bd8a4d,Clinical Guideline Chapter,fr
+D7cadfec00d,Clinical Guideline Chapter,en
+D9693bfc7d0,Clinical Guideline Chapter,es
+D87af7060b1,Clinical Guideline Chapter,fr
+D204e20fedf,Clinical Guideline Chapter,en
+Dc95675e997,Clinical Guideline Chapter,fr
+Dc1c94fd2b0,Clinical Guideline Chapter,fr
+D92891baef4,Clinical Guideline Chapter,en
+Dff0977248b,Clinical Guideline Chapter,fr
+D16f1d7f403,Clinical Guideline Chapter,en
+D86ccec4869,Clinical Guideline Chapter,fr
+Df46169d1f2,Clinical Guideline Chapter,fr
+Ddf8cc4588f,Clinical Guideline Chapter,fr
+Dc2778fe78c,Clinical Guideline Chapter,en
+D8066519952,Clinical Guideline Chapter,fr
+D350658ea33,Clinical Guideline Chapter,es
+D3de36827c6,Clinical Guideline Chapter,fr
+D2f8154a664,Clinical Guideline Chapter,en
+D407219b98d,Clinical Guideline Chapter,fr
+D8025c7c417,Clinical Guideline Chapter,fr
+D6869f1b1af,Clinical Guideline Chapter,en
+D88e42ff882,Clinical Guideline Chapter,fr
+Ddeb37405b7,Clinical Guideline Chapter,en
+D39f30a2a32,Clinical Guideline Chapter,es
+Df8d55f1f0f,Clinical Guideline Chapter,fr
