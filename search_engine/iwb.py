@@ -374,6 +374,12 @@ class IWBSearch:
             })
         if not rows and response.message:
             rows.append({"doc_id": "No good match", "genre": "", "html_content": response.message, "filepath": ""})
+        missing = re.search(r"No document mentions: (.+?)\.(?:\s|$)", response.message or "")
+        if rows and rows[0]["doc_id"] != "No good match" and missing:
+            # The best words of the query are in no document here: say so before the loose matches
+            rows.insert(0, {"doc_id": f"Nothing in this library mentions: {missing.group(1)}", "genre": "",
+                            "html_content": "The results below do not contain those words. "
+                                            "Try searching nearby devices.", "filepath": ""})
         return rows
 
     def stats(self) -> Dict[str, Any]:

@@ -113,16 +113,26 @@ class Handler(BaseHTTPRequestHandler):
                     results += f'<div class="r"><h3>{title}</h3><p>{body}</p></div>'
             except Exception as e:
                 results = f'<p class="count">Error: {html.escape(str(e))}</p>'
+            if node.enabled:
+                results += ('<form method="post" action="/sync"><input type="hidden" name="q" '
+                            f'value="{html.escape(q)}"><button>Not here? Search nearby devices</button></form>')
         self._page(SEARCH.replace("__Q__", html.escape(q)).replace("__RESULTS__", results))
 
     def do_POST(self):
-        self.rfile.read(int(self.headers.get("Content-Length", 0)))
+        form = parse_qs(self.rfile.read(int(self.headers.get("Content-Length", 0))).decode())
+        q = form.get("q", [""])[0]
         msg = ""
         if node.enabled and self.path == "/sync":
-            threading.Thread(target=node.sync_all, daemon=True).start()
-            msg = "Syncing with all peers…"
+            if q:
+                # "Search nearby devices": fetch what peers have, then run the same search again
+                worker = threading.Thread(target=node.sync_all, daemon=True)
+                worker.start()
+                worker.join(timeout=60)
+            else:
+                threading.Thread(target=node.sync_all, daemon=True).start()
+                msg = "Syncing with all peers…"
         self.send_response(303)
-        self.send_header("Location", "/peers?msg=" + quote(msg))
+        self.send_header("Location", "/?q=" + quote(q) if q else "/peers?msg=" + quote(msg))
         self.end_headers()
 
     def _page(self, body):

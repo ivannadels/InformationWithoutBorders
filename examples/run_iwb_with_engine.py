@@ -59,6 +59,15 @@ def main() -> None:
                 print(f"Search engine update postponed: {exc}")
     threading.Thread(target=follow_sync, daemon=True).start()
 
+    sync_all = their_app.node.sync_all
+    def sync_then_refresh():                # so "Search nearby devices" sees the new documents at once
+        sync_all()
+        try:
+            engine.refresh()
+        except Exception as exc:
+            print(f"Search engine update postponed: {exc}")
+    their_app.node.sync_all = sync_then_refresh
+
     their_app.node.start()                  # same as their own __main__
     print(f"Serving on http://localhost:{args.port}")
     HTTPServer(("127.0.0.1", args.port), their_app.Handler).serve_forever()
