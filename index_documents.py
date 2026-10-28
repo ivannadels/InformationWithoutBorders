@@ -15,7 +15,7 @@ cursor.execute("""
     
     html_content);""")
 
-df = pd.read_csv("documentataion.csv")
+df = pd.read_csv("documentation.csv")
 
 HTML_DIR = "html_files"
 
