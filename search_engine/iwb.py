@@ -279,32 +279,34 @@ class IWBSearch:
             self._last_check = time.monotonic()
             current = database_signature(self.db_path)
             rebuilt = False
-            if force or not self.config.index_path.is_file() or self._index_signature() != current:
-                documents, report = load_iwb_database(self.db_path, self.files_dir)
-                self.last_report = report
-                self.last_stats = Indexer(self.config).build(documents, extra_meta={SIGNATURE_KEY: current,
-                                                                                    "source_database": str(self.db_path)})
-                rebuilt = True
-            if rebuilt or self._engine is None:
-                if self._engine is not None:
-                    self._engine.close()        # the old file was replaced: reopen
-                self._engine = SearchEngine(config=self.config)
+            try:
+                if force or not self.config.index_path.is_file() or self._index_signature() != current:
+                    documents, report = load_iwb_database(self.db_path, self.files_dir)
+                    self.last_report = report
+                    if self._engine is not None:
+                        self._engine.close()    # Windows cannot replace a file that is still open
+                        self._engine = None
+                    self.last_stats = Indexer(self.config).build(documents, extra_meta={SIGNATURE_KEY: current,
+                                                                                        "source_database": str(self.db_path)})
+                    rebuilt = True
+            finally:
+                if self._engine is None and self.config.index_path.is_file():
+                    self._engine = SearchEngine(config=self.config)   # the new index, or the old one if the build failed
             return rebuilt
 
     def _maybe_refresh(self) -> None:
         if time.monotonic() - self._last_check >= self.check_every:
             try:
                 self.refresh()
-            except sqlite3.Error as exc:     # database busy or locked by sync: keep the current index
+            except (sqlite3.Error, OSError) as exc:   # database busy, or index file in use: keep the current index
                 log.warning("Could not check the database for changes: %s", exc)
 
     # ---- searching ---------------------------------------------------------------
     def search(self, query: str, top_k: Optional[int] = None, filters: Optional[Dict[str, Any]] = None,
                min_coverage: Optional[float] = None) -> SearchResponse:
         self._maybe_refresh()
-        with self._lock:
-            engine = self._engine
-        return engine.search(query, top_k=top_k, filters=filters, min_coverage=min_coverage)
+        with self._lock:                     # a rebuild closes the engine, so search while holding the lock
+            return self._engine.search(query, top_k=top_k, filters=filters, min_coverage=min_coverage)
 
     def legacy_rows(self, query: str, top_k: Optional[int] = None) -> List[Dict[str, str]]:
         """
