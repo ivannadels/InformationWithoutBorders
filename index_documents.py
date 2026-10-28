@@ -37,8 +37,13 @@ def extract_text_from_pdf(filepath):
 
 df = pd.read_csv("documentation.csv")
 
-for _, row in df.iterrows(): 
+# Rows are synced between devices by doc_id: skip documents already indexed here
+already_indexed = {r[0] for r in cursor.execute("SELECT doc_id FROM docs_index")}
+
+for _, row in df.iterrows():
     doc_id = str(row["id"])
+    if doc_id in already_indexed:
+        continue
     genre = str(row["genre"])
     language = str(row["language"])
 
@@ -55,15 +60,19 @@ for _, row in df.iterrows():
         except Exception as e: 
             print(f"HTML extraction error for {html_path}: {e}")
 
-    elif os.path.exists(html_path):
-        filepath = pdf_path 
+    elif os.path.exists(pdf_path):
+        filepath = pdf_path
         try: 
             extracted_text = extract_text_from_pdf(pdf_path)
         except Exception as e: 
             print(f"Extraction error for PDF {pdf_path}: {e}")
 
-    else: 
+    else:
         print(f"No file found for document ID: {doc_id}")
+
+    # An empty row would stop sync from fetching this document from a device that has the file
+    if not extracted_text:
+        continue
 
     cursor.execute("""
         INSERT INTO docs_index (doc_id, genre, language, filepath, html_content)

@@ -1,6 +1,7 @@
-# index_documents.py (builds search_index.db from documentation.csv + html_files/)
+# index_documents.py (builds search_index.db from documentation.csv + documents/*.html, *.pdf)
 pandas
 beautifulsoup4
+PyMuPDF
 
 # search_engine/: no third-party packages needed for searching (Python standard library only).
 # Optional: lets search_engine read PDF files directly
