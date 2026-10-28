@@ -1,6 +1,6 @@
 # Offline Medical Document Search Engine
 
-The search component for the MSF hackathon project. A user describes a situation in their own words, and the engine returns a short, ranked list of the most relevant local documents. Each result has an excerpt, the source file and its metadata.
+The search component of Information Without Borders (see [README.md](README.md) for setting up and running the whole project). A user describes a situation in their own words, and the engine returns a short, ranked list of the most relevant local documents. Each result has an excerpt, the source file and its metadata.
 
 * Runs **fully offline**: no internet, no cloud API, no server, no GPU.
 * Needs **only Python's standard library** (SQLite with FTS5 is built into Python). `pypdf` is optional, for reading PDFs directly.
@@ -27,8 +27,8 @@ python examples/run_iwb_with_engine.py
 ```
 
 1. Install the packages (once, with internet).
-2. Build the team's database: `documentation.csv` + `html_files/<id>.html` → `search_index.db`.
-3. Search it. The first run builds `search_engine_index.db` next to it, in about 3 seconds.
+2. Build the team's database: `documentation.csv` + `documents/<id>.html` or `documents/<id>.pdf` → `search_index.db`.
+3. Search it. The first run builds `search_engine_index.db` next to it, in about 30 seconds for the full library (579 documents).
 4. Or use the team's web page with this engine: open http://localhost:8000.
 
 From Python: `from search_engine.iwb import IWBSearch; IWBSearch("search_index.db").search("...")`.
@@ -86,7 +86,7 @@ search_engine/
 tests/             54 automated tests, run with networking blocked (+1 optional on the real HTML files)
 tests/sample_data/ 16 small test files, metadata.csv, eval_queries.json (labelled queries)
 tests/real_data_eval_queries.json   draft labelled queries for the real data (ids = doc_id)
-requirements.txt   pandas + beautifulsoup4 (index_documents.py), optional pypdf, pytest
+requirements.txt   pandas + beautifulsoup4 + PyMuPDF (index_documents.py), optional pypdf, pytest
 pytest.ini         test settings
 examples/          integration_example.py (Python), http_api.py (tiny local web API),
                    run_iwb_with_engine.py (team's web page + this engine)
@@ -94,9 +94,9 @@ examples/          integration_example.py (Python), http_api.py (tiny local web 
 
 ---
 
-## 2. Assumptions about your data (please check these)
+## 2. Assumptions about the data (for folders other than the team's database)
 
-I haven't seen the real dataset, so the code doesn't hard-code field names. It makes the following assumptions, each of which can be changed in `config.py`:
+These apply when indexing a folder of files with `python -m search_engine index`. The team's database is read by `iwb.py` instead (see below). The code doesn't hard-code field names; each assumption can be changed in `config.py`:
 
 | Assumption | If it's wrong |
 |---|---|
@@ -108,8 +108,6 @@ I haven't seen the real dataset, so the code doesn't hard-code field names. It m
 | Documents are mostly **English**. | The stemmer (Porter) is English-only. See Limitations. |
 | PDFs contain **real text**, not scanned images. | Scanned PDFs are skipped with a warning ("needs OCR"). |
 | The CSV encoding is UTF-8 (cp1252/latin-1 are tried as fallbacks), with `,`, `;`, tab or `|` separators. | Detected automatically. |
-
-**To confirm these, please send me:** the folder structure (e.g. output of `tree -L 2`), the CSV header plus 3–5 rows, and one example of a document that exists in two formats.
 
 ---
 
@@ -133,7 +131,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-This installs only `pypdf` (for PDFs) and `pytest` (for tests). The search engine itself needs nothing else. Once this is done, you can work offline.
+This installs `pandas`, `beautifulsoup4` and `PyMuPDF` (for `index_documents.py`), `pypdf` (for PDFs) and `pytest` (for tests). The search engine itself needs nothing else. Once this is done, you can work offline.
 
 **Build the index** from the sample data:
 
@@ -197,7 +195,7 @@ python -m search_engine search "Adult with a cough for several weeks, fever and 
 * **27 science portal pages load their article with JavaScript.** The text is in the file but hidden until the page runs. The extractor handles this, and the team's existing `Parsed/*.md` files had partly missed it.
 * `Dd4ee6d16b7.html` and `P07.html` are the same Gaza article. They are grouped and shown once.
 * **Translations are kept separate.** The English, French and Spanish versions of a chapter are not merged as duplicates, even when their reference lists are identical.
-* **The HTML pages have no clinical guideline on child diarrhoea or dehydration.** Only 3 pages mention "dehydration", all of them news. The documents that cover it in depth are **PDFs** (e.g. `P16`, `Dfee2e6ea98`, `D5da0aed2fd`). So the example query from the brief needs the PDFs indexed too.
+* **The HTML pages have no clinical guideline on child diarrhoea or dehydration.** Only 3 pages mention "dehydration", all of them news. The documents that cover it in depth are **PDFs** (e.g. `P16`, `Dfee2e6ea98`, `D5da0aed2fd`). `index_documents.py` now indexes the PDFs too, so the example query from the brief finds them.
 
 **Measured on the real HTML index** (Apple M5 laptop): indexing 342 pages takes about 3 seconds. Search takes a median of 6 ms (slowest 12 ms). With the draft labels in `tests/real_data_eval_queries.json` (12 queries, **written by Claude from page titles and content; they need review by someone with clinical knowledge**):
 
@@ -228,9 +226,9 @@ Found 3 matching documents.  (6.12 ms)
 
 ## Combining with the InformationWithoutBorders project (database + p2p sync)
 
-**Result: the two work together.** I tested this on a copy, without changing any file in the team's folder. The team's own `search.py` web page, running with this engine, answers natural-language questions. As written, it returns **0 results** for them, because `LIKE '%whole sentence%'` never matches a full description.
+The project's `search.py` web page, started through `examples/run_iwb_with_engine.py`, answers natural-language questions with this engine. On its own, `search.py` returns **0 results** for them, because its `LIKE '%whole sentence%'` search never matches a full description.
 
-| Query | Their `search()` as written | Their page + this engine |
+| Query | `search.py` on its own | `search.py` + this engine |
 |---|---|---|
 | "Adult with a cough for several weeks, fever and weight loss" | 0 results | 1. Pulmonary tuberculosis (P21), 2. Amoxicillin (P24), 3. TB treatment regimens (P49) |
 | "How to organise a mass vaccination campaign during a measles epidemic" | 0 results | 1. Film: Organising an emergency mass vaccination campaign (measles guideline) |
@@ -238,20 +236,20 @@ Found 3 matching documents.  (6.12 ms)
 ### How the pieces fit
 
 ```
-documentation.csv + html_files/*.html
-        │  their index_documents.py
+documentation.csv + documents/*.html, *.pdf
+        │  index_documents.py
         ▼
 search_index.db  ── table docs_index(doc_id, genre, language, filepath, html_content)
         │                         ▲
-        │                         │ their p2p/ copies rows between devices (by doc_id)
+        │                         │ p2p/ copies rows between devices (by doc_id)
         ▼
 search_engine/iwb.py  (reads it, read-only)
         │  uses the original HTML file if it is on this device, else the row's stored text
         ▼
-search_engine_index.db  (this engine's own index, next to their database; *.db = git-ignored)
-        │  rebuilt automatically when sync adds or removes rows
+search_engine_index.db  (this engine's own index, next to the database; *.db = git-ignored)
+        │  updated automatically when sync adds or removes rows
         ▼
-IWBSearch.search(...)  /  IWBSearch.legacy_rows(...)  → their web page
+IWBSearch.search(...)  /  IWBSearch.legacy_rows(...)  → search.py web page
 ```
 
 ### Using it
@@ -261,7 +259,7 @@ From Python:
 ```python
 from search_engine.iwb import IWBSearch
 
-engine = IWBSearch("search_index.db")     # their database; builds our index the first time (~3 s)
+engine = IWBSearch("search_index.db")     # the team's database; builds the engine's index the first time (~30 s)
 response = engine.search("Pregnant woman with Ebola", top_k=5)
 for r in response.results:
     print(r.rank, r.doc_id, r.title, r.metadata.get("genre"), r.snippet)
@@ -273,23 +271,23 @@ From the command line:
 python -m search_engine iwb --db search_index.db "Pregnant woman with Ebola"
 ```
 
-To run their web page with this engine, without editing their files:
+To run the web page with this engine:
 
 ```bash
 python examples/run_iwb_with_engine.py
 ```
 
-Then open http://localhost:8000. Search uses this engine, and p2p sync and the Peers page work as before.
+Then open http://localhost:8000. Search uses this engine, and p2p sync and the Peers page work as before. The "Not here? Search nearby devices" button under the results syncs with every peer in reach, updates the index and runs the same search again.
 
-### What I changed in the search engine to fit their code
+### How `iwb.py` fits the project's database
 
-* **New `search_engine/iwb.py`.** It reads their `docs_index` table read-only, using their `doc_id` as the id (so ids match p2p and `remove-doc`), and their `genre` and `language` as metadata. A filter like `{"genre": "Clinical Guideline Chapter"}` works.
-* **Two sources of text per document.** If the HTML file exists on this device (their `filepath`, or `files_dir`), it's re-read with the structure-aware extractor (headings, sections, tables). If the row arrived through sync without its file, the stored text is used. Word sequences repeated across many documents (menus, banners, footers) are removed first. This keeps at least 98.6% of every clinical guideline's real text. More aggressive settings were measured to remove up to 27% of a guideline's real text, so they're not used.
-* **Follows sync.** A fingerprint of their table is checked (default every 60 s). When p2p adds a row, or the admin's `remove-doc` purges one, the index is rebuilt (~3 s for 342 documents) and reopened. A processing version number is part of the check, so engine updates also trigger a rebuild.
-* **`legacy_rows()`** returns rows with their column names (`doc_id`, `genre`, `html_content`), so their page displays our results unchanged: title + id, then genre · language · match strength, then section and excerpt.
-* Their database is never written to. A test checks the file is byte-for-byte identical after searching.
+* **`search_engine/iwb.py`** reads the `docs_index` table read-only, using `doc_id` as the id (so ids match p2p and `remove-doc`), and `genre` and `language` as metadata. A filter like `{"genre": "Clinical Guideline Chapter"}` works.
+* **Two sources of text per document.** If the HTML file exists on this device (the row's `filepath`, or `files_dir`), it's re-read with the structure-aware extractor (headings, sections, tables). If the row arrived through sync without its file, the stored text is used. Word sequences repeated across many documents (menus, banners, footers) are removed first. This keeps at least 98.6% of every clinical guideline's real text. More aggressive settings were measured to remove up to 27% of a guideline's real text, so they're not used.
+* **Follows sync.** A fingerprint of the table is checked in the background (default every 60 s). When p2p adds a row, or the admin's `remove-doc` purges one, up to 50 changed documents are applied to the existing index in under a second; larger changes trigger a full rebuild (~30 s for the full library). A processing version number is part of the check, so engine updates also trigger a rebuild.
+* **`legacy_rows()`** returns rows with the column names `search.py` expects (`doc_id`, `genre`, `html_content`), so the page displays results unchanged: title + id, then genre · language · match strength, then section and excerpt.
+* The team's database is never written to. A test checks the file is byte-for-byte identical after searching.
 
-### Measured (copy of their database, built by their own `index_documents.py` from the 342 HTML files)
+### Measured (earlier version of the database, built from the 342 HTML files only, before PDFs were indexed)
 
 | | Device that has the HTML files | Peer device with synced rows only |
 |---|---|---|
@@ -297,26 +295,24 @@ Then open http://localhost:8000. Search uses this engine, and p2p sync and the P
 | Best document first (MRR, 12 draft queries) | 0.95 | 1.0 |
 | Recall@5 | 1.0 | 0.94 |
 | Off-topic queries answered with nothing | 2 of 2 | 2 of 2 |
-| Section names in results | yes | no (their stored text has no headings) |
+| Section names in results | yes | no (the stored text has no headings) |
 | Median search time | 6 ms | 8 ms |
 
-### Problems found in their code (not changed; suggestions for the team)
+### Open suggestions for `index_documents.py` and `search.py`
 
-1. **Their `.venv` is missing `pandas` and `beautifulsoup4`,** so `index_documents.py` fails to start. Fix: `pip install pandas beautifulsoup4` (needs internet once).
-2. **`index_documents.py` expects a folder `html_files/`** next to it. The data is in `D4GC data/Original`, so copy or link it there.
-3. **Running `index_documents.py` twice stores every document twice.** `CREATE ... IF NOT EXISTS` keeps the old rows, and FTS5 has no unique key. Their `LIKE` search then shows duplicates. This engine keeps the first row per `doc_id` and warns.
-4. **The stored text is the whole page flattened to one line,** including the app banner, language pickers and menus. Peer devices that only receive rows therefore get lower-quality text: no headings, sections or tables. Suggested change in `index_documents.py`, so every device gets clean, structured text through sync:
+1. **The stored text is the whole page flattened to one line,** including the app banner, language pickers and menus. Peer devices that only receive rows therefore get lower-quality text: no headings, sections or tables. Suggested change in `index_documents.py`, so every device gets clean, structured text through sync:
    ```python
-   from search_engine.html_extract import extract_html_page   # needs this project's search_engine/ on the path
+   from search_engine.html_extract import extract_html_page
    # instead of the BeautifulSoup get_text() block:
-   text_content = extract_html_page(f.read()).text
+   return extract_html_page(f.read()).text
    ```
-5. **Only HTML is indexed.** The 240 PDFs (which hold the clinical guidelines on diarrhoea and dehydration) and 182 CSV ids without any file are skipped.
-6. To use the engine permanently instead of through the launcher, their `search.py` would only need:
+2. To use the engine permanently instead of through the launcher, `search.py` would only need:
    ```python
    from search_engine.iwb import IWBSearch
-   search = IWBSearch(DB).legacy_rows        # replaces their def search(q)
+   search = IWBSearch(DB).legacy_rows        # replaces def search(q)
    ```
+
+Already fixed: `index_documents.py` now reads `documents/`, indexes PDFs (PyMuPDF), skips documents already in the database, and skips files missing on this device instead of storing empty rows (an empty row stopped sync from ever fetching the real document from a peer).
 
 ## 4. Connecting it to the main application
 
@@ -470,7 +466,7 @@ Nothing in the engine ever opens a network connection. The index is a single loc
 
 **Recommended improvements, in order:**
 
-1. **Index the PDFs too** (240 files): the core clinical guidelines, including diarrhoea and dehydration, are there. The engine already reads PDFs. Alternatively, use the team's `Parsed/*.md` text for the PDFs through the JSONL interface.
+1. **Rank MSF's annual activity reports lower.** Now that the PDFs are indexed, these long reports mention almost every topic and often appear second or third for clinical questions, the same way bibliographies did (see `low_value_title_pattern` in `config.py`).
 2. **Have a clinician review `tests/real_data_eval_queries.json`** and add 20–30 real queries, then tune `min_coverage` and `relative_score_cutoff` on it.
 3. **Have a clinician review the synonym list** in `config.py`: lay terms → clinical terms, French/English, abbreviations (ORS, SAM, PPH...). It's cheap and has a large effect.
 4. **Index useful CSV columns** (`--csv-keywords topic summary keywords`).
