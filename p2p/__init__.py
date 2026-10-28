@@ -17,9 +17,14 @@ Setup (run from the folder that contains p2p/):
   Remove someone:     python -m p2p remove <public key or name>
   List members:       python -m p2p members
 
+Documents are identified by their catalogue id and are only ever added by members.
+Only the admin can take one out of the network:
+  Remove a document:  python -m p2p remove-doc <doc id>     (deleted on every device as they sync)
+  Undo that:          python -m p2p restore-doc <doc id>
+
 Security: only keys on the admin-signed member list can sync. All traffic between peers
 is encrypted with fresh keys per request (see crypto.py), and both sides prove who they
 are before any data is sent. The local-network announcements are not encrypted: they
 reveal that a device on this network runs this software, but nothing about the data.
 """
-from .node import Node
+from .node import Node, removed_docs

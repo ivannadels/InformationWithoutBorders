@@ -25,6 +25,8 @@ p.add_argument("key")
 p.add_argument("name")
 sub.add_parser("remove", help="admin: remove a member").add_argument("who", help="public key or name")
 sub.add_parser("members", help="list members")
+sub.add_parser("remove-doc", help="admin: delete a document from every device").add_argument("doc_id")
+sub.add_parser("restore-doc", help="admin: undo remove-doc").add_argument("doc_id")
 a = ap.parse_args()
 
 if a.cmd == "keygen":
@@ -42,7 +44,7 @@ elif a.cmd == "init":
     pub = ed25519.public_key(admin).hex()
     _save(ADMIN, {"secret": admin.hex()})
     _save(NETWORK, {"name": a.name, "admin": pub})
-    members = {"network": pub, "version": 1, "members": {}}
+    members = {"network": pub, "version": 1, "members": {}, "removed": []}
     ident = _load(IDENTITY)
     if ident:
         members["members"][ed25519.public_key(bytes.fromhex(ident["secret"])).hex()] = ident["name"]
@@ -79,3 +81,23 @@ elif a.cmd == "members":
     print(f"{net['name']}: member list version {m['version']}")
     for k, n in m["members"].items():
         print(f"  {n:24} {k}")
+    if m["removed"]:
+        print(f"Removed documents: {', '.join(m['removed'])}")
+
+elif a.cmd == "remove-doc":
+    admin, m = _admin_and_members()
+    if a.doc_id in m["removed"]:
+        sys.exit(f"{a.doc_id} is already removed.")
+    m["removed"].append(a.doc_id)
+    m["version"] += 1
+    sign_members(m, admin)
+    print(f"Removed document {a.doc_id}. Each device deletes it, and stops accepting it, as peers sync.")
+
+elif a.cmd == "restore-doc":
+    admin, m = _admin_and_members()
+    if a.doc_id not in m["removed"]:
+        sys.exit(f"{a.doc_id} is not removed.")
+    m["removed"].remove(a.doc_id)
+    m["version"] += 1
+    sign_members(m, admin)
+    print(f"Restored {a.doc_id}. Re-index it on one device and it spreads to peers as they sync.")

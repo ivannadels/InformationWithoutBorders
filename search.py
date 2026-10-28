@@ -15,12 +15,13 @@ from urllib.parse import urlparse, parse_qs, quote
 
 import p2p
 
-DB = "data.db"                 # path to your SQLite file
-TABLE = "items"                # table to search
-COLUMNS = ["title", "body"]    # text columns to search in
+DB = "search_index.db"         # built by index_documents.py
+TABLE = "docs_index"           # table to search
+KEY = "doc_id"                 # column that identifies a document on every device
+COLUMNS = ["doc_id", "genre", "html_content"]  # text columns to search in; the first is the result title
 LIMIT = 50
 
-node = p2p.Node(DB, TABLE)
+node = p2p.Node(DB, TABLE, KEY)
 
 PAGE = """<!doctype html>
 <html><head><meta charset="utf-8"><title>Local Search</title>

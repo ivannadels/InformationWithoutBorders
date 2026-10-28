@@ -32,7 +32,7 @@ STATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state")
 IDENTITY = os.path.join(STATE, "identity.key")   # this device's private key (keep it private)
 ADMIN = os.path.join(STATE, "admin.key")         # network admin's private key (admin only)
 NETWORK = os.path.join(STATE, "network.json")    # network name + admin public key
-MEMBERS = os.path.join(STATE, "members.json")    # admin-signed list of member public keys
+MEMBERS = os.path.join(STATE, "members.json")    # admin-signed member public keys + removed document ids
 
 P2P_PORT = 8765
 DISCOVERY_PORT = 8766
@@ -80,7 +80,7 @@ def _broadcast_addresses():
 
 
 def _members_payload(m):
-    return json.dumps({k: m[k] for k in ("network", "version", "members")}, sort_keys=True).encode()
+    return json.dumps({k: m[k] for k in ("network", "version", "members", "removed")}, sort_keys=True).encode()
 
 
 def sign_members(m, admin_secret):
@@ -91,9 +91,16 @@ def sign_members(m, admin_secret):
 def members_valid(m, admin_pub):
     try:
         return (m["network"] == admin_pub and isinstance(m["version"], int) and isinstance(m["members"], dict)
+                and isinstance(m["removed"], list) and all(isinstance(d, str) for d in m["removed"])
                 and ed25519.verify(bytes.fromhex(admin_pub), _members_payload(m), bytes.fromhex(m["sig"])))
     except (KeyError, TypeError, ValueError):
         return False
+
+
+def removed_docs():
+    """Document ids the admin has removed from the network (empty if this device has no valid list)."""
+    net, m = _load(NETWORK), _load(MEMBERS)
+    return set(m["removed"]) if net and m and members_valid(m, net["admin"]) else set()
 
 
 def _verify(key_hex, msg, sig_hex):
@@ -112,17 +119,14 @@ def _session_keys(secret, other_eph, network, nonce, server_eph, client_eph):
     return crypto.derive(shared, _transcript("keys", network, nonce, server_eph, client_eph))
 
 
-# Rows are identified by a hash of their contents, so the same row has the same id on every device.
+# Rows are identified by their key column (e.g. a catalogue id), which is the same on every device.
+# Documents are only ever added; removal is done by the admin through the signed member list.
 def _enc(v):
     return {"b64": base64.b64encode(v).decode()} if isinstance(v, bytes) else v
 
 
 def _dec(v):
     return base64.b64decode(v["b64"]) if isinstance(v, dict) else v
-
-
-def row_id(row):
-    return hashlib.sha256(json.dumps(row, sort_keys=True).encode()).hexdigest()
 
 
 def _columns(con, table):
@@ -141,11 +145,10 @@ def _peer(addr):
 
 
 class Node:
-    def __init__(self, db, table, port=P2P_PORT):
-        self.db, self.table, self.port = db, table, port
+    def __init__(self, db, table, key, port=P2P_PORT):
+        self.db, self.table, self.key, self.port = db, table, key, port
         self.peers = {}                # announced instance id -> _peer(...)
         self.challenges = {}           # nonce -> (expiry, our X25519 secret, our X25519 public hex)
-        self.index = None              # row id -> rowid, rebuilt at the start of each sync
         self.lock = threading.Lock()
         self.sync_lock = threading.Lock()
         self.instance = secrets.token_hex(8)
@@ -175,22 +178,18 @@ class Node:
 
     # --- local database ---
 
-    def _index(self, refresh=False):
-        if refresh or self.index is None:
-            con = sqlite3.connect(self.db, timeout=30)
-            cols = _columns(con, self.table)
-            rows = con.execute(f"SELECT rowid, {_cols_sql(cols)} FROM {self.table}")
-            self.index = {row_id(dict(zip(cols, map(_enc, r[1:])))): r[0] for r in rows}
-            con.close()
-        return self.index
+    def _ids(self):
+        con = sqlite3.connect(self.db, timeout=30)
+        ids = {r[0] for r in con.execute(f'SELECT "{self.key}" FROM {self.table}')}
+        con.close()
+        return ids
 
     def _fetch(self, ids):
-        index = self.index or self._index(refresh=True)
-        rowids = [index[i] for i in ids[:BATCH] if i in index]
+        ids = [i for i in ids[:BATCH] if isinstance(i, str)]
         con = sqlite3.connect(self.db, timeout=30)
         cols = _columns(con, self.table)
-        sql = f"SELECT {_cols_sql(cols)} FROM {self.table} WHERE rowid IN ({', '.join('?' * len(rowids))})"
-        rows = [dict(zip(cols, map(_enc, r))) for r in con.execute(sql, rowids)] if rowids else []
+        sql = f'SELECT {_cols_sql(cols)} FROM {self.table} WHERE "{self.key}" IN ({", ".join("?" * len(ids))})'
+        rows = [dict(zip(cols, map(_enc, r))) for r in con.execute(sql, ids)] if ids else []
         con.close()
         return rows
 
@@ -201,14 +200,23 @@ class Node:
         added = 0
         with con:
             for row in rows:
-                rid = row_id(row) if isinstance(row, dict) else None
-                if rid in wanted:          # only accept rows whose contents match an id we asked for
-                    wanted.discard(rid)
+                doc = row.get(self.key) if isinstance(row, dict) else None
+                if isinstance(doc, str) and doc in wanted:   # only accept ids we asked for, once each
+                    wanted.discard(doc)
                     con.execute(sql, [_dec(row.get(c)) for c in cols])
                     added += 1
         con.close()
-        self.index = None
         return added
+
+    def purge(self):
+        """Delete the documents the admin has removed from the network."""
+        removed = list(self.members["removed"])
+        con = sqlite3.connect(self.db, timeout=30)
+        with con:
+            for k in range(0, len(removed), BATCH):
+                part = removed[k:k + BATCH]
+                con.execute(f'DELETE FROM {self.table} WHERE "{self.key}" IN ({", ".join("?" * len(part))})', part)
+        con.close()
 
     # --- server side ---
 
@@ -233,7 +241,7 @@ class Node:
         if op == "members":
             return self.members
         if op == "ids":
-            return list(self._index(refresh=True))
+            return sorted(self._ids())
         if op == "rows":
             return self._fetch(req.get("ids", []))
         raise ValueError(f"unknown op {op!r}")
@@ -274,9 +282,10 @@ class Node:
                 members, key = self._call(addr, "members")
                 self.adopt_members(members)
                 peer["name"] = self.members["members"].get(key, "")
+                self.purge()
                 ids, _ = self._call(addr, "ids")
-                have = self._index(refresh=True)
-                missing = [i for i in ids if i not in have]
+                skip = self._ids() | set(self.members["removed"])
+                missing = [i for i in ids if isinstance(i, str) and i not in skip]
                 added = 0
                 for k in range(0, len(missing), BATCH):
                     rows, _ = self._call(addr, "rows", ids=missing[k:k + BATCH])
