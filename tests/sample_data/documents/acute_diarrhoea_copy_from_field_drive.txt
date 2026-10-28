@@ -1,0 +1,28 @@
+FIELD DRIVE COPY
+Management of Acute Diarrhoea and Dehydration in Children
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Acute diarrhoea is one of the leading causes of illness in children
+under five, especially where safe water and sanitation are limited.
+
+Assessment of dehydration. Look at the general condition of the child,
+check whether the eyes are sunken, offer fluid to see whether the
+child drinks eagerly or is unable to drink, and pinch the skin of the
+abdomen. Classify the child as having no dehydration, some dehydration
+or severe dehydration.
+
+Treatment plans. Children with no dehydration can be treated at home
+with extra fluids and continued feeding. Children with some
+dehydration receive oral rehydration solution (ORS) under observation
+in the clinic. Children with severe dehydration need urgent
+intravenous fluids; if IV access is not possible, a nasogastric tube
+can be used for ORS while arranging referral.
+
+Zinc supplementation is given alongside ORS. Breastfeeding and feeding
+should continue during the episode.
+
+Settings with limited supplies. Where intravenous fluids or equipment
+are limited, prioritise ORS, train caregivers to give it at home, and
+refer children with severe dehydration or danger signs as soon as
+possible.

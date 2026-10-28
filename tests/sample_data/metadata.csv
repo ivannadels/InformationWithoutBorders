@@ -1,0 +1,17 @@
+filename,title,publication_date,version,language,organisation,topic
+diarrhoea_children.txt,Management of Acute Diarrhoea and Dehydration in Children,2021-03-01,2.1,English,Sample Org,paediatrics; diarrhoea
+diarrhoea_children.html,Management of Acute Diarrhoea and Dehydration in Children,2021-03-01,2.1,English,Sample Org,paediatrics; diarrhoea
+acute_diarrhoea_copy_from_field_drive.txt,Acute diarrhoea (field copy),,,English,,
+cholera_outbreak.txt,Cholera Outbreak Response,2019-11-15,1.0,English,Sample Org,outbreak; cholera
+malnutrition_sam.txt,Severe Acute Malnutrition in Children,2022-06-10,3.0,English,Sample Org,nutrition
+malaria_children.txt,Malaria in Children,2020-01-20,1.2,English,Sample Org,malaria
+measles_vaccination.txt,Measles Vaccination Campaigns,2018-05-05,1.0,English,Sample Org,vaccination
+burns_first_aid.txt,Burns First Aid,2023-02-14,1.0,English,Sample Org,trauma
+wash_water_treatment.txt,WASH in Camps,2017-09-09,2.0,English,Sample Org,water sanitation
+psychological_first_aid.txt,Psychological First Aid,2021-07-07,1.0,English,Sample Org,mental health
+hypertension_adults.txt,Hypertension in Adults,2022-10-01,1.0,English,Sample Org,non-communicable disease
+cold_chain_logistics.txt,Cold Chain and Supply Logistics,2019-04-04,1.1,English,Sample Org,logistics
+tuberculosis.txt,Tuberculosis,2020-12-12,2.0,English,Sample Org,tuberculosis
+postpartum_haemorrhage.txt,Postpartum Haemorrhage,2021-08-08,1.0,English,Sample Org,maternal health
+empty_scan.txt,Scanned document (no text),2015-01-01,1.0,English,Sample Org,
+missing_file.pdf,A document listed in the CSV but missing on disk,2016-01-01,1.0,English,Sample Org,

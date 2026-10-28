@@ -1,0 +1,11 @@
+Cholera Outbreak Response: Case Management and Treatment Centres
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Cholera causes profuse watery diarrhoea that can lead to severe dehydration and death within hours if untreated.
+
+During an outbreak, set up cholera treatment centres or units with separate areas for triage, observation and hospitalisation. Strict hygiene and chlorine solutions are used to prevent spread inside the centre.
+
+Rehydration is the core of treatment. Most patients can be treated with oral rehydration solution. Patients with severe dehydration require intravenous Ringer's lactate.
+
+Surveillance, community case finding, safe water and oral cholera vaccination campaigns support control of the outbreak.

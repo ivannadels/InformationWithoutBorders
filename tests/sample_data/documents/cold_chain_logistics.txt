@@ -1,0 +1,9 @@
+Vaccine Cold Chain and Medical Supply Logistics
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Vaccines must be stored within the recommended temperature range from the central store to the point of use.
+
+Use temperature monitoring devices, cold boxes and ice packs. Record temperatures twice daily.
+
+Plan medical supply orders using consumption data and keep buffer stock for emergencies.
