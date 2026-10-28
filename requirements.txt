@@ -1,0 +1,12 @@
+# index_documents.py (builds search_index.db from documentation.csv + html_files/)
+pandas
+beautifulsoup4
+
+# search_engine/: no third-party packages needed for searching (Python standard library only).
+# Optional: lets search_engine read PDF files directly
+pypdf>=4.0
+
+# Running the tests (python -m pytest)
+pytest>=7.0
+
+# p2p/ and search.py use only the Python standard library.

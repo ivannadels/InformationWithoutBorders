@@ -1,0 +1,9 @@
+Hypertension in Adults: Primary Care Management
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Hypertension is diagnosed after repeated blood pressure measurements on separate visits.
+
+Lifestyle advice includes reducing salt intake, physical activity and stopping smoking. Medication follows the national protocol.
+
+Follow up regularly and check for complications affecting the heart, kidneys and eyes.

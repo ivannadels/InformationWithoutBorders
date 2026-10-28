@@ -1,0 +1,17 @@
+[
+  {"query": "A doctor in a remote clinic is treating a child with severe diarrhoea and signs of dehydration, but the clinic has limited medical supplies. Find relevant clinical guidelines or protocols.",
+   "relevant": ["diarrhoea_children.txt", "cholera_outbreak.txt"]},
+  {"query": "Diarrhea in kids", "relevant": ["diarrhoea_children.txt"]},
+  {"query": "Baby with high fever in a malaria area who cannot drink", "relevant": ["malaria_children.txt"]},
+  {"query": "Heavy bleeding after delivery, the mother is losing a lot of blood", "relevant": ["postpartum_haemorrhage.txt"]},
+  {"query": "How do we keep vaccines cold while transporting them to the camp?", "relevant": ["cold_chain_logistics.txt", "measles_vaccination.txt"]},
+  {"query": "Child with severe malnutrition and swelling of both feet", "relevant": ["malnutrition_sam.txt"]},
+  {"query": "Patient bitten by a snake on the leg, now swelling and bleeding gums", "relevant": ["snakebite.txt"]},
+  {"query": "Outbreak of watery diarrhoea in a refugee camp with many adults severely dehydrated", "relevant": ["cholera_outbreak.txt", "wash_water_treatment.txt"]},
+  {"query": "A woman is very distressed after violence, crying and unable to cope", "relevant": ["psychological_first_aid.txt"]},
+  {"query": "Cough for three weeks with night sweats and weight loss", "relevant": ["tuberculosis.txt"]},
+  {"query": "Toddler burned by boiling water on the arm", "relevant": ["burns_first_aid.txt"]},
+  {"query": "How to repair a motorbike engine", "relevant": []},
+  {"query": "Quarterly budget spreadsheet for the finance department", "relevant": []},
+  {"query": "Child with Ebola haemorrhagic fever", "relevant": []}
+]

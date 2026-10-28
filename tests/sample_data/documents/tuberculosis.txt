@@ -1,0 +1,7 @@
+Tuberculosis Diagnosis and Treatment
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Suspect tuberculosis (TB) in people with cough lasting more than two weeks, fever, night sweats and weight loss.
+
+Diagnose with sputum testing or molecular tests where available. Treatment lasts several months and adherence support is essential.

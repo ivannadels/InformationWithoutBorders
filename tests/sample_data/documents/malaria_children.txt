@@ -1,0 +1,9 @@
+Uncomplicated and Severe Malaria in Children
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Malaria should be suspected in any child with fever living in or returning from an endemic area. Confirm with a rapid diagnostic test or microscopy before treatment where possible.
+
+Uncomplicated malaria is treated with artemisinin-based combination therapy according to national protocol.
+
+Severe malaria includes impaired consciousness, convulsions, respiratory distress, severe anaemia or inability to drink. It requires parenteral treatment and urgent referral.

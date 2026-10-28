@@ -1,0 +1,11 @@
+Severe Acute Malnutrition in Children: Outpatient and Inpatient Care
+
+Synthetic test text for software testing only. Not clinical guidance.
+
+Severe acute malnutrition (SAM) in children aged 6 to 59 months is identified by mid-upper arm circumference, weight-for-height or bilateral pitting oedema.
+
+Children with an appetite and without medical complications can be treated as outpatients with ready-to-use therapeutic food. Children with complications or no appetite are admitted for inpatient stabilisation.
+
+Dehydration in malnourished children is difficult to assess and rehydration must be slower and more careful than in well-nourished children, because of the risk of fluid overload. A special rehydration solution for malnutrition is used.
+
+Monitor weight gain, treat infections and follow up after discharge.

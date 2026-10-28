@@ -1,0 +1,79 @@
+{
+ "_note": "DRAFT labels written by Claude from page titles and content; they need review by someone with clinical knowledge. 'relevant' = doc_ids a medic would want to see; [] = the collection cannot answer this. Ids are the doc_id values of the docs_index table (documentation.csv).",
+ "queries": [
+  {
+   "query": "A woman is bleeding heavily right after giving birth",
+   "relevant": [
+    "P23"
+   ]
+  },
+  {
+   "query": "Adult with a cough for several weeks, fever and weight loss, I suspect tuberculosis",
+   "relevant": [
+    "P21",
+    "P49"
+   ]
+  },
+  {
+   "query": "What dose of amoxicillin should I give a child with pneumonia?",
+   "relevant": [
+    "P24"
+   ]
+  },
+  {
+   "query": "There is a cholera outbreak in our area, how do we respond?",
+   "relevant": [
+    "D85d7eb197c",
+    "D0fdc1d0ef5",
+    "D88155b92de",
+    "Dfd0d9e3afb"
+   ]
+  },
+  {
+   "query": "How to organise a mass vaccination campaign during a measles epidemic",
+   "relevant": [
+    "Da5fedd82cc"
+   ]
+  },
+  {
+   "query": "Children are malnourished and there are disease outbreaks in the camp",
+   "relevant": [
+    "D1ef8b2e740"
+   ]
+  },
+  {
+   "query": "Pregnant woman with Ebola",
+   "relevant": [
+    "Dd3e3626d4a"
+   ]
+  },
+  {
+   "query": "HIV treatment for children",
+   "relevant": [
+    "D957b22fac7"
+   ]
+  },
+  {
+   "query": "Medicines for drug-resistant TB",
+   "relevant": [
+    "Dc190efdb0c",
+    "Dd049c70e48",
+    "D0ae7cceef7"
+   ]
+  },
+  {
+   "query": "Protection of civilians and the wounded under international humanitarian law",
+   "relevant": [
+    "P26"
+   ]
+  },
+  {
+   "query": "Patient bitten by a snake, swelling and bleeding gums",
+   "relevant": []
+  },
+  {
+   "query": "How to repair a motorbike engine",
+   "relevant": []
+  }
+ ]
+}
